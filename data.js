@@ -1,20 +1,22 @@
 // data.js
 
 export async function climateData(models) {
+  console.log("Adding city: Paris.");
   const paris = await models.Cities.create({
     city: "Paris",
     country: "France",
     latitude: 48.8566,
     longitude: 2.3522,
-  }); 
+  });
 
+  console.log("Adding climate data: Paris.");
   await models.Climate.bulkCreate([{
       cityId: paris.id,
       month: 1,
       avgHighTemp: 7,
       avgLowTemp: 3,
       avgRainfallmm: 54,
-      avgRainDays: 15,
+      avgRainfallDays: 15,
       avgSunshineHours: 62,
     },
     {
@@ -23,7 +25,7 @@ export async function climateData(models) {
       avgHighTemp: 9,
       avgLowTemp: 3,
       avgRainfallmm: 46,
-      avgRainDays: 13,
+      avgRainfallDays: 13,
       avgSunshineHours: 88,
     },
     {
@@ -32,7 +34,7 @@ export async function climateData(models) {
       avgHighTemp: 12,
       avgLowTemp: 5,
       avgRainfallmm: 51,
-      avgRainDays: 13,
+      avgRainfallDays: 13,
       avgSunshineHours: 118,
     },
     {
@@ -41,7 +43,7 @@ export async function climateData(models) {
       avgHighTemp: 16,
       avgLowTemp: 8,
       avgRainfallmm: 45,
-      avgRainDays: 12,
+      avgRainfallDays: 12,
       avgSunshineHours: 178,
     },
     {
@@ -50,7 +52,7 @@ export async function climateData(models) {
       avgHighTemp: 20,
       avgLowTemp: 12,
       avgRainfallmm: 60,
-      avgRainDays: 12,
+      avgRainfallDays: 12,
       avgSunshineHours: 190,
     },
     {
@@ -59,7 +61,7 @@ export async function climateData(models) {
       avgHighTemp: 23,
       avgLowTemp: 15,
       avgRainfallmm: 54,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 212,
     },
     {
@@ -68,7 +70,7 @@ export async function climateData(models) {
       avgHighTemp: 25,
       avgLowTemp: 17,
       avgRainfallmm: 58,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 212,
     },
     {
@@ -77,7 +79,7 @@ export async function climateData(models) {
       avgHighTemp: 25,
       avgLowTemp: 17,
       avgRainfallmm: 51,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 212,
     },
     {
@@ -86,7 +88,7 @@ export async function climateData(models) {
       avgHighTemp: 21,
       avgLowTemp: 14,
       avgRainfallmm: 54,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 168,
     },
     {
@@ -95,7 +97,7 @@ export async function climateData(models) {
       avgHighTemp: 16,
       avgLowTemp: 10,
       avgRainfallmm: 57,
-      avgRainDays: 12,
+      avgRainfallDays: 12,
       avgSunshineHours: 124,
     },
     {
@@ -104,7 +106,7 @@ export async function climateData(models) {
       avgHighTemp: 10,
       avgLowTemp: 6,
       avgRainfallmm: 52,
-      avgRainDays: 15,
+      avgRainfallDays: 15,
       avgSunshineHours: 66,
     },
     {
@@ -113,7 +115,7 @@ export async function climateData(models) {
       avgHighTemp: 7,
       avgLowTemp: 4,
       avgRainfallmm: 55,
-      avgRainDays: 15,
+      avgRainfallDays: 15,
       avgSunshineHours: 54,
     },
   ]);
@@ -126,14 +128,14 @@ export async function climateData(models) {
     longitude: 19.0402,
   });
 
-  // Insert 12 months of climate data for Budapest
+  console.log("Adding climate data: Budapest.");
   await models.Climate.bulkCreate([{
       cityId: budapest.id,
       month: 1,
       avgHighTemp: 3,
       avgLowTemp: -2,
       avgRainfallmm: 35,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 45,
     },
     {
@@ -142,7 +144,7 @@ export async function climateData(models) {
       avgHighTemp: 6,
       avgLowTemp: -1,
       avgRainfallmm: 30,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 80,
     },
     {
@@ -151,7 +153,7 @@ export async function climateData(models) {
       avgHighTemp: 12,
       avgLowTemp: 1,
       avgRainfallmm: 40,
-      avgRainDays: 11,
+      avgRainfallDays: 11,
       avgSunshineHours: 130,
     },
     {
@@ -160,7 +162,7 @@ export async function climateData(models) {
       avgHighTemp: 17,
       avgLowTemp: 6,
       avgRainfallmm: 50,
-      avgRainDays: 11,
+      avgRainfallDays: 11,
       avgSunshineHours: 180,
     },
     {
@@ -169,7 +171,7 @@ export async function climateData(models) {
       avgHighTemp: 22,
       avgLowTemp: 11,
       avgRainfallmm: 60,
-      avgRainDays: 12,
+      avgRainfallDays: 12,
       avgSunshineHours: 210,
     },
     {
@@ -178,7 +180,7 @@ export async function climateData(models) {
       avgHighTemp: 26,
       avgLowTemp: 15,
       avgRainfallmm: 70,
-      avgRainDays: 12,
+      avgRainfallDays: 12,
       avgSunshineHours: 220,
     },
     {
@@ -187,7 +189,7 @@ export async function climateData(models) {
       avgHighTemp: 28,
       avgLowTemp: 17,
       avgRainfallmm: 55,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 230,
     },
     {
@@ -196,7 +198,7 @@ export async function climateData(models) {
       avgHighTemp: 28,
       avgLowTemp: 16,
       avgRainfallmm: 65,
-      avgRainDays: 11,
+      avgRainfallDays: 11,
       avgSunshineHours: 210,
     },
     {
@@ -205,7 +207,7 @@ export async function climateData(models) {
       avgHighTemp: 24,
       avgLowTemp: 12,
       avgRainfallmm: 50,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 180,
     },
     {
@@ -214,7 +216,7 @@ export async function climateData(models) {
       avgHighTemp: 17,
       avgLowTemp: 7,
       avgRainfallmm: 40,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 130,
     },
     {
@@ -223,7 +225,7 @@ export async function climateData(models) {
       avgHighTemp: 10,
       avgLowTemp: 2,
       avgRainfallmm: 35,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 70,
     },
     {
@@ -232,7 +234,7 @@ export async function climateData(models) {
       avgHighTemp: 5,
       avgLowTemp: -1,
       avgRainfallmm: 30,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 50,
     },
   ]);
@@ -245,14 +247,14 @@ export async function climateData(models) {
     longitude: 18.4241,
   });
 
-  // Insert 12 months of climate data for Cape Town
+  console.log("Adding climate data: Cape Town.");
   await models.Climate.bulkCreate([{
       cityId: capeTown.id,
       month: 1,
       avgHighTemp: 26,
       avgLowTemp: 16,
       avgRainfallmm: 14,
-      avgRainDays: 2,
+      avgRainfallDays: 2,
       avgSunshineHours: 350,
     },
     {
@@ -261,7 +263,7 @@ export async function climateData(models) {
       avgHighTemp: 27,
       avgLowTemp: 16,
       avgRainfallmm: 18,
-      avgRainDays: 2,
+      avgRainfallDays: 2,
       avgSunshineHours: 320,
     },
     {
@@ -270,7 +272,7 @@ export async function climateData(models) {
       avgHighTemp: 25,
       avgLowTemp: 15,
       avgRainfallmm: 20,
-      avgRainDays: 3,
+      avgRainfallDays: 3,
       avgSunshineHours: 290,
     },
     {
@@ -279,7 +281,7 @@ export async function climateData(models) {
       avgHighTemp: 23,
       avgLowTemp: 13,
       avgRainfallmm: 40,
-      avgRainDays: 5,
+      avgRainfallDays: 5,
       avgSunshineHours: 250,
     },
     {
@@ -288,7 +290,7 @@ export async function climateData(models) {
       avgHighTemp: 20,
       avgLowTemp: 11,
       avgRainfallmm: 70,
-      avgRainDays: 8,
+      avgRainfallDays: 8,
       avgSunshineHours: 200,
     },
     {
@@ -297,7 +299,7 @@ export async function climateData(models) {
       avgHighTemp: 18,
       avgLowTemp: 9,
       avgRainfallmm: 90,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 180,
     },
     {
@@ -306,7 +308,7 @@ export async function climateData(models) {
       avgHighTemp: 18,
       avgLowTemp: 8,
       avgRainfallmm: 80,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 190,
     },
     {
@@ -315,7 +317,7 @@ export async function climateData(models) {
       avgHighTemp: 19,
       avgLowTemp: 9,
       avgRainfallmm: 77,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 210,
     },
     {
@@ -324,7 +326,7 @@ export async function climateData(models) {
       avgHighTemp: 20,
       avgLowTemp: 10,
       avgRainfallmm: 40,
-      avgRainDays: 6,
+      avgRainfallDays: 6,
       avgSunshineHours: 250,
     },
     {
@@ -333,7 +335,7 @@ export async function climateData(models) {
       avgHighTemp: 22,
       avgLowTemp: 12,
       avgRainfallmm: 30,
-      avgRainDays: 4,
+      avgRainfallDays: 4,
       avgSunshineHours: 280,
     },
     {
@@ -342,7 +344,7 @@ export async function climateData(models) {
       avgHighTemp: 24,
       avgLowTemp: 14,
       avgRainfallmm: 18,
-      avgRainDays: 3,
+      avgRainfallDays: 3,
       avgSunshineHours: 310,
     },
     {
@@ -351,7 +353,7 @@ export async function climateData(models) {
       avgHighTemp: 26,
       avgLowTemp: 16,
       avgRainfallmm: 15,
-      avgRainDays: 2,
+      avgRainfallDays: 2,
       avgSunshineHours: 340,
     },
   ]);
@@ -364,14 +366,14 @@ export async function climateData(models) {
     longitude: 13.405,
   });
 
-  // Insert 12 months of climate data for Berlin
+  console.log("Adding climate data: Berlin.");
   await models.Climate.bulkCreate([{
       cityId: berlin.id,
       month: 1,
       avgHighTemp: 3,
       avgLowTemp: -2,
       avgRainfallmm: 42,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 45,
     },
     {
@@ -380,7 +382,7 @@ export async function climateData(models) {
       avgHighTemp: 5,
       avgLowTemp: -2,
       avgRainfallmm: 34,
-      avgRainDays: 8,
+      avgRainfallDays: 8,
       avgSunshineHours: 75,
     },
     {
@@ -389,7 +391,7 @@ export async function climateData(models) {
       avgHighTemp: 10,
       avgLowTemp: 1,
       avgRainfallmm: 40,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 110,
     },
     {
@@ -398,7 +400,7 @@ export async function climateData(models) {
       avgHighTemp: 15,
       avgLowTemp: 5,
       avgRainfallmm: 41,
-      avgRainDays: 8,
+      avgRainfallDays: 8,
       avgSunshineHours: 160,
     },
     {
@@ -407,7 +409,7 @@ export async function climateData(models) {
       avgHighTemp: 20,
       avgLowTemp: 10,
       avgRainfallmm: 55,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 220,
     },
     {
@@ -416,7 +418,7 @@ export async function climateData(models) {
       avgHighTemp: 23,
       avgLowTemp: 13,
       avgRainfallmm: 68,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 230,
     },
     {
@@ -425,7 +427,7 @@ export async function climateData(models) {
       avgHighTemp: 25,
       avgLowTemp: 15,
       avgRainfallmm: 58,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 235,
     },
     {
@@ -434,7 +436,7 @@ export async function climateData(models) {
       avgHighTemp: 24,
       avgLowTemp: 14,
       avgRainfallmm: 58,
-      avgRainDays: 8,
+      avgRainfallDays: 8,
       avgSunshineHours: 225,
     },
     {
@@ -443,7 +445,7 @@ export async function climateData(models) {
       avgHighTemp: 20,
       avgLowTemp: 11,
       avgRainfallmm: 45,
-      avgRainDays: 8,
+      avgRainfallDays: 8,
       avgSunshineHours: 165,
     },
     {
@@ -452,7 +454,7 @@ export async function climateData(models) {
       avgHighTemp: 14,
       avgLowTemp: 7,
       avgRainfallmm: 36,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 110,
     },
     {
@@ -461,7 +463,7 @@ export async function climateData(models) {
       avgHighTemp: 8,
       avgLowTemp: 3,
       avgRainfallmm: 48,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 55,
     },
     {
@@ -470,7 +472,7 @@ export async function climateData(models) {
       avgHighTemp: 4,
       avgLowTemp: 0,
       avgRainfallmm: 51,
-      avgRainDays: 11,
+      avgRainfallDays: 11,
       avgSunshineHours: 45,
     },
   ]);
@@ -483,14 +485,14 @@ export async function climateData(models) {
     longitude: -0.1276,
   });
 
-  // Insert 12 months of climate data for London
+  console.log("Adding climate data: London.");
   await models.Climate.bulkCreate([{
       cityId: london.id,
       month: 1,
       avgHighTemp: 8,
       avgLowTemp: 3,
       avgRainfallmm: 55,
-      avgRainDays: 12,
+      avgRainfallDays: 12,
       avgSunshineHours: 61,
     },
     {
@@ -499,7 +501,7 @@ export async function climateData(models) {
       avgHighTemp: 8,
       avgLowTemp: 3,
       avgRainfallmm: 40,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 78,
     },
     {
@@ -508,7 +510,7 @@ export async function climateData(models) {
       avgHighTemp: 11,
       avgLowTemp: 5,
       avgRainfallmm: 42,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 115,
     },
     {
@@ -517,7 +519,7 @@ export async function climateData(models) {
       avgHighTemp: 14,
       avgLowTemp: 7,
       avgRainfallmm: 43,
-      avgRainDays: 8,
+      avgRainfallDays: 8,
       avgSunshineHours: 168,
     },
     {
@@ -526,7 +528,7 @@ export async function climateData(models) {
       avgHighTemp: 18,
       avgLowTemp: 10,
       avgRainfallmm: 47,
-      avgRainDays: 8,
+      avgRainfallDays: 8,
       avgSunshineHours: 192,
     },
     {
@@ -535,7 +537,7 @@ export async function climateData(models) {
       avgHighTemp: 21,
       avgLowTemp: 13,
       avgRainfallmm: 45,
-      avgRainDays: 7,
+      avgRainfallDays: 7,
       avgSunshineHours: 200,
     },
     {
@@ -544,7 +546,7 @@ export async function climateData(models) {
       avgHighTemp: 24,
       avgLowTemp: 15,
       avgRainfallmm: 40,
-      avgRainDays: 6,
+      avgRainfallDays: 6,
       avgSunshineHours: 212,
     },
     {
@@ -553,7 +555,7 @@ export async function climateData(models) {
       avgHighTemp: 23,
       avgLowTemp: 15,
       avgRainfallmm: 48,
-      avgRainDays: 7,
+      avgRainfallDays: 7,
       avgSunshineHours: 202,
     },
     {
@@ -562,7 +564,7 @@ export async function climateData(models) {
       avgHighTemp: 20,
       avgLowTemp: 13,
       avgRainfallmm: 49,
-      avgRainDays: 8,
+      avgRainfallDays: 8,
       avgSunshineHours: 150,
     },
     {
@@ -571,7 +573,7 @@ export async function climateData(models) {
       avgHighTemp: 15,
       avgLowTemp: 10,
       avgRainfallmm: 71,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 116,
     },
     {
@@ -580,7 +582,7 @@ export async function climateData(models) {
       avgHighTemp: 11,
       avgLowTemp: 6,
       avgRainfallmm: 63,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 70,
     },
     {
@@ -589,7 +591,7 @@ export async function climateData(models) {
       avgHighTemp: 8,
       avgLowTemp: 4,
       avgRainfallmm: 55,
-      avgRainDays: 11,
+      avgRainfallDays: 11,
       avgSunshineHours: 57,
     },
   ]);
@@ -602,14 +604,14 @@ export async function climateData(models) {
     longitude: 36.817223,
   });
 
-  // Insert 12 months of climate data for Nairobi
+  console.log("Adding climate data: Nairobi.");
   await models.Climate.bulkCreate([{
       cityId: nairobi.id,
       month: 1,
       avgHighTemp: 26,
       avgLowTemp: 13,
       avgRainfallmm: 50,
-      avgRainDays: 5,
+      avgRainfallDays: 5,
       avgSunshineHours: 270,
     },
     {
@@ -618,7 +620,7 @@ export async function climateData(models) {
       avgHighTemp: 27,
       avgLowTemp: 13,
       avgRainfallmm: 40,
-      avgRainDays: 4,
+      avgRainfallDays: 4,
       avgSunshineHours: 260,
     },
     {
@@ -627,7 +629,7 @@ export async function climateData(models) {
       avgHighTemp: 27,
       avgLowTemp: 14,
       avgRainfallmm: 90,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 240,
     },
     {
@@ -636,7 +638,7 @@ export async function climateData(models) {
       avgHighTemp: 25,
       avgLowTemp: 14,
       avgRainfallmm: 240,
-      avgRainDays: 17,
+      avgRainfallDays: 17,
       avgSunshineHours: 180,
     },
     {
@@ -645,7 +647,7 @@ export async function climateData(models) {
       avgHighTemp: 24,
       avgLowTemp: 13,
       avgRainfallmm: 180,
-      avgRainDays: 15,
+      avgRainfallDays: 15,
       avgSunshineHours: 170,
     },
     {
@@ -654,7 +656,7 @@ export async function climateData(models) {
       avgHighTemp: 22,
       avgLowTemp: 11,
       avgRainfallmm: 30,
-      avgRainDays: 4,
+      avgRainfallDays: 4,
       avgSunshineHours: 200,
     },
     {
@@ -663,7 +665,7 @@ export async function climateData(models) {
       avgHighTemp: 21,
       avgLowTemp: 10,
       avgRainfallmm: 20,
-      avgRainDays: 3,
+      avgRainfallDays: 3,
       avgSunshineHours: 210,
     },
     {
@@ -672,7 +674,7 @@ export async function climateData(models) {
       avgHighTemp: 22,
       avgLowTemp: 10,
       avgRainfallmm: 20,
-      avgRainDays: 3,
+      avgRainfallDays: 3,
       avgSunshineHours: 210,
     },
     {
@@ -681,7 +683,7 @@ export async function climateData(models) {
       avgHighTemp: 25,
       avgLowTemp: 12,
       avgRainfallmm: 30,
-      avgRainDays: 4,
+      avgRainfallDays: 4,
       avgSunshineHours: 230,
     },
     {
@@ -690,7 +692,7 @@ export async function climateData(models) {
       avgHighTemp: 26,
       avgLowTemp: 13,
       avgRainfallmm: 90,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 220,
     },
     {
@@ -699,7 +701,7 @@ export async function climateData(models) {
       avgHighTemp: 24,
       avgLowTemp: 13,
       avgRainfallmm: 150,
-      avgRainDays: 13,
+      avgRainfallDays: 13,
       avgSunshineHours: 200,
     },
     {
@@ -708,7 +710,7 @@ export async function climateData(models) {
       avgHighTemp: 24,
       avgLowTemp: 13,
       avgRainfallmm: 70,
-      avgRainDays: 6,
+      avgRainfallDays: 6,
       avgSunshineHours: 240,
     },
   ]);
@@ -721,14 +723,14 @@ export async function climateData(models) {
     longitude: 139.6917,
   });
 
-  // Insert 12 months of climate data for Tokyo
+  console.log("Adding climate data: Tokyo.");
   await models.Climate.bulkCreate([{
       cityId: tokyo.id,
       month: 1,
       avgHighTemp: 10,
       avgLowTemp: 2,
       avgRainfallmm: 50,
-      avgRainDays: 5,
+      avgRainfallDays: 5,
       avgSunshineHours: 180,
     },
     {
@@ -737,7 +739,7 @@ export async function climateData(models) {
       avgHighTemp: 11,
       avgLowTemp: 2,
       avgRainfallmm: 60,
-      avgRainDays: 6,
+      avgRainfallDays: 6,
       avgSunshineHours: 175,
     },
     {
@@ -746,7 +748,7 @@ export async function climateData(models) {
       avgHighTemp: 14,
       avgLowTemp: 5,
       avgRainfallmm: 110,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 160,
     },
     {
@@ -755,7 +757,7 @@ export async function climateData(models) {
       avgHighTemp: 19,
       avgLowTemp: 10,
       avgRainfallmm: 125,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 170,
     },
     {
@@ -764,7 +766,7 @@ export async function climateData(models) {
       avgHighTemp: 23,
       avgLowTemp: 15,
       avgRainfallmm: 135,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 170,
     },
     {
@@ -773,7 +775,7 @@ export async function climateData(models) {
       avgHighTemp: 25,
       avgLowTemp: 19,
       avgRainfallmm: 160,
-      avgRainDays: 12,
+      avgRainfallDays: 12,
       avgSunshineHours: 130,
     },
     {
@@ -782,7 +784,7 @@ export async function climateData(models) {
       avgHighTemp: 29,
       avgLowTemp: 23,
       avgRainfallmm: 155,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 170,
     },
     {
@@ -791,7 +793,7 @@ export async function climateData(models) {
       avgHighTemp: 31,
       avgLowTemp: 24,
       avgRainfallmm: 170,
-      avgRainDays: 10,
+      avgRainfallDays: 10,
       avgSunshineHours: 190,
     },
     {
@@ -800,7 +802,7 @@ export async function climateData(models) {
       avgHighTemp: 27,
       avgLowTemp: 21,
       avgRainfallmm: 210,
-      avgRainDays: 12,
+      avgRainfallDays: 12,
       avgSunshineHours: 140,
     },
     {
@@ -809,7 +811,7 @@ export async function climateData(models) {
       avgHighTemp: 21,
       avgLowTemp: 15,
       avgRainfallmm: 160,
-      avgRainDays: 9,
+      avgRainfallDays: 9,
       avgSunshineHours: 165,
     },
     {
@@ -818,7 +820,7 @@ export async function climateData(models) {
       avgHighTemp: 16,
       avgLowTemp: 9,
       avgRainfallmm: 90,
-      avgRainDays: 6,
+      avgRainfallDays: 6,
       avgSunshineHours: 170,
     },
     {
@@ -827,7 +829,7 @@ export async function climateData(models) {
       avgHighTemp: 12,
       avgLowTemp: 5,
       avgRainfallmm: 50,
-      avgRainDays: 4,
+      avgRainfallDays: 4,
       avgSunshineHours: 180,
     },
   ]);
