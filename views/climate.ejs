@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cities</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%- include('partials/head') %>
+    
+  </head>
+  
+  <body>
+      
+    <form action="/addClimate" method="POST">
+      <label for="city">City:</label><br>
+      <input type="text" name="cityId" id="cityId" value=""><br>
+      <label for="attribute">Attribute:</label><br>
+      <input type="text" name="attribute" id="attribute" value=""><br>
+      <label>Data:</label><br>
+      <input type="text" name="january" id="january" placeholder="Jan" value="">
+      <input type="text" name="february" id="february" placeholder="Feb" value="">
+      <input type="text" name="march" id="march" placeholder="Mar" value="">
+      <input type="text" name="april" id="april" placeholder="Apr" value="">
+      <input type="text" name="may" id="may" placeholder="May" value="">
+      <input type="text" name="june" id="june" placeholder="Jun" value="">
+      <input type="text" name="july" id="july" placeholder="Jul" value="">
+      <input type="text" name="august" id="august" placeholder="Aug" value="">
+      <input type="text" name="september" id="september" placeholder="Sep" value="">
+      <input type="text" name="october" id="october" placeholder="Oct" value="">
+      <input type="text" name="november" id="november" placeholder="Nov" value="">
+      <input type="text" name="december" id="december" placeholder="Dec" value="">
+      <input type="submit" value="Submit">
+    </form>
+
+    <table>
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Attribute</th>
+        <% months.forEach(m => { %>
+          <th><%= m %></th>
+        <% }) %>
+      </tr>
+    </thead>
+    <tbody>
+      <% Object.entries(dataByCity).forEach(([city, attrs]) => { %>
+        <% attributes.forEach(attr => { %>
+          <tr>
+            <td><%= city %></td>
+            <td><%= attr %></td>
+            <% attrs[attr].forEach(value => { %>
+              <td><%= (value !== null && value !== undefined) ? value : "-" %></td>
+            <% }) %>
+          </tr>
+        <% }) %>
+      <% }) %>
+    </tbody>
+  </table>
+
+
+  </body>
+</html>

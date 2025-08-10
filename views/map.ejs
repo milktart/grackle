@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Cities</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+
+    #monthSelector {
+      margin: 10px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body>
+  <label for="monthSelector">Select Month:</label>
+  <select id="monthSelector">
+    <option value="1">January</option>
+    <option value="2">February</option>
+    <option value="3">March</option>
+    <option value="4">April</option>
+    <option value="5">May</option>
+    <option value="6">June</option>
+    <option value="7">July</option>
+    <option value="8">August</option>
+    <option value="9">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+  </select>
+  <div id="map" style="height: 600px;"></div>
+
+  <script>
+    const userPreferences = {
+      idealHighTempRange: [20, 35],
+      idealLowTempRange: [12, 20],
+      maxRainfallmm: 120,
+      minSunshineHours: 6,
+      weights: {
+        tempWeight: 0.4,
+        rainfallWeight: 0.2,
+        sunshineWeight: 0.4,
+      }
+    };
+
+    function calculateVisitabilityScore(locationMonthData, weights) {
+      const {
+        avgHighTemp,
+        avgLowTemp,
+        avgRainfallmm,
+        avgSunshineHours,
+      } = locationMonthData;
+
+      const {
+        idealHighTempRange,
+        idealLowTempRange,
+        maxRainfallmm,
+        minSunshineHours,
+        weights: {
+          tempWeight,
+          rainfallWeight,
+          sunshineWeight,
+        }
+      } = weights;
+
+      function normalizeRange(value, idealRange) {
+        const [min, max] = idealRange;
+        if (value >= min && value <= max) return 1;
+        const diff = Math.min(Math.abs(value - min), Math.abs(value - max));
+        return Math.max(0, 1 - diff / 15);
+      }
+
+      const tempScore = (normalizeRange(avgHighTemp, idealHighTempRange) +
+        normalizeRange(avgLowTemp, idealLowTempRange)) / 2;
+
+      const rainfallScore = Math.max(0, 1 - (avgRainfallmm / maxRainfallmm));
+      //const rainDaysScore = Math.max(0, 1 - (avgRainfallDays / maxRainfallDays));
+      const sunshineScore = Math.min(1, avgSunshineHours / minSunshineHours);
+      //const eventsScore = specialEventsScore / 10;
+      const weightedScore = (
+        tempScore * tempWeight +
+        rainfallScore * rainfallWeight +
+        //rainDaysScore * rainDaysWeight +
+        sunshineScore * sunshineWeight
+        //eventsScore * eventsWeight
+      );
+
+      return Math.round(weightedScore * 100);
+    }
+
+    const map = L.map('map').setView([20, 0], 2);
+
+/*
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+*/
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+      maxZoom: 16
+    }).addTo(map);
+
+    let heatLayer = L.heatLayer([], {
+      radius: 25,
+      blur: 15,
+      maxZoom: 1,
+      gradient: { 0.2: 'red', 0.5: 'orange', 0.8: 'yellow', 1.0: 'green' }
+    }).addTo(map);
+
+  async function updateHeatmap(month) {
+    const res = await fetch(`/map/${month}`);
+    const climateData = await res.json();
+
+    const points = climateData.map(loc => {
+      const score = calculateVisitabilityScore(loc, userPreferences);
+      console.log(score)
+      return [loc.latitude, loc.longitude, score / 100];
+    });
+
+    heatLayer.setLatLngs(points);
+  }
+
+  document.getElementById('monthSelector').addEventListener('change', e => {
+    updateHeatmap(e.target.value);
+  });
+
+  updateHeatmap(1); // Load January on start
+  </script>
+</body>
+
+</html>
